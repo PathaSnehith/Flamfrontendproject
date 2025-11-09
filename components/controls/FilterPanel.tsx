@@ -42,68 +42,84 @@ function FilterPanelComponent() {
     <div
       className="filter-panel"
       style={{
-        padding: '20px',
-        background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-        borderRadius: '12px',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        padding: '24px',
+        background: 'linear-gradient(145deg, rgba(14, 165, 233, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%)',
+        borderRadius: '14px',
+        boxShadow: '0 6px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+        border: '2px solid rgba(14, 165, 233, 0.25)',
+        backdropFilter: 'blur(8px)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
         <div
           style={{
-            width: '3px',
-            height: '18px',
-            background: 'linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%)',
-            borderRadius: '2px',
-            marginRight: '10px',
+            width: '4px',
+            height: '20px',
+            background: 'linear-gradient(180deg, #ff6b35 0%, #0ea5e9 100%)',
+            borderRadius: '3px',
+            marginRight: '12px',
+            boxShadow: '0 0 6px rgba(255, 107, 53, 0.5)',
           }}
         />
-        <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '600', color: '#fff' }}>
-          Filters
+        <h3 style={{ 
+          margin: 0, 
+          fontSize: '18px', 
+          fontWeight: '800', 
+          background: 'linear-gradient(135deg, #ff6b35 0%, #0ea5e9 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textTransform: 'uppercase',
+          letterSpacing: '0.5px',
+        }}>
+          Data Filters
         </h3>
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500', color: '#e2e8f0' }}>
+      <div style={{ marginBottom: '20px' }}>
+        <label style={{ display: 'block', marginBottom: '12px', fontSize: '14px', fontWeight: '700', color: '#67e8f9', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
           Categories
         </label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
           {CATEGORIES.map((category) => (
             <label
               key={category}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '6px 14px',
+                padding: '8px 16px',
                 background: localFilters.categories?.includes(category)
-                  ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
-                  : 'rgba(255, 255, 255, 0.1)',
+                  ? 'linear-gradient(135deg, #ff6b35 0%, #f97316 100%)'
+                  : 'linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%)',
                 color: localFilters.categories?.includes(category)
                   ? '#fff'
-                  : '#e2e8f0',
-                borderRadius: '6px',
+                  : '#67e8f9',
+                borderRadius: '8px',
                 cursor: 'pointer',
                 fontSize: '13px',
-                fontWeight: '500',
+                fontWeight: '600',
                 border: localFilters.categories?.includes(category)
-                  ? 'none'
-                  : '1px solid rgba(255, 255, 255, 0.2)',
-                transition: 'all 0.2s ease',
+                  ? '2px solid rgba(255, 107, 53, 0.5)'
+                  : '2px solid rgba(14, 165, 233, 0.3)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 boxShadow: localFilters.categories?.includes(category)
-                  ? '0 2px 4px rgba(59, 130, 246, 0.3)'
-                  : 'none',
+                  ? '0 4px 12px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                  : '0 2px 6px rgba(0, 0, 0, 0.2)',
               }}
               onMouseEnter={(e) => {
                 if (!localFilters.categories?.includes(category)) {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.25) 0%, rgba(6, 182, 212, 0.25) 100%)';
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.5)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(14, 165, 233, 0.3)';
                 }
               }}
               onMouseLeave={(e) => {
                 if (!localFilters.categories?.includes(category)) {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%)';
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.3)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.2)';
                 }
               }}
             >
@@ -111,7 +127,7 @@ function FilterPanelComponent() {
                 type="checkbox"
                 checked={localFilters.categories?.includes(category) || false}
                 onChange={() => handleCategoryToggle(category)}
-                style={{ marginRight: '4px' }}
+                style={{ marginRight: '6px', cursor: 'pointer' }}
               />
               {category}
             </label>
@@ -119,95 +135,103 @@ function FilterPanelComponent() {
         </div>
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500', color: '#e2e8f0' }}>
+      <div style={{ marginBottom: '20px' }}>
+        <label style={{ display: 'block', marginBottom: '12px', fontSize: '14px', fontWeight: '700', color: '#67e8f9', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
           Value Range
         </label>
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
             <input
               type="number"
               placeholder="Min"
-              value={localFilters.minValue || ''}
+              value={localFilters.minValue !== undefined ? localFilters.minValue : ''}
               onChange={(e) =>
                 setLocalFilters((prev) => ({
                   ...prev,
-                  minValue: e.target.value ? Number(e.target.value) : undefined,
+                  minValue: e.target.value !== '' ? Number(e.target.value) : undefined,
                 }))
               }
               style={{
-                padding: '8px 12px',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                borderRadius: '6px',
-                width: '90px',
+                padding: '10px 14px',
+                border: '2px solid rgba(14, 165, 233, 0.3)',
+                borderRadius: '8px',
+                width: '100px',
                 fontSize: '13px',
-                background: 'rgba(255, 255, 255, 0.1)',
+                background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
                 color: '#fff',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.3s ease',
+                fontWeight: '500',
               }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = '#3b82f6';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.borderColor = '#0ea5e9';
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%)';
+                e.currentTarget.style.boxShadow = '0 0 0 4px rgba(14, 165, 233, 0.2)';
               }}
               onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.3)';
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             />
-            <span style={{ color: '#cbd5e1', fontSize: '13px' }}>to</span>
+            <span style={{ color: '#67e8f9', fontSize: '14px', fontWeight: '600' }}>to</span>
             <input
               type="number"
               placeholder="Max"
-              value={localFilters.maxValue || ''}
+              value={localFilters.maxValue !== undefined ? localFilters.maxValue : ''}
               onChange={(e) =>
                 setLocalFilters((prev) => ({
                   ...prev,
-                  maxValue: e.target.value ? Number(e.target.value) : undefined,
+                  maxValue: e.target.value !== '' ? Number(e.target.value) : undefined,
                 }))
               }
               style={{
-                padding: '8px 12px',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                borderRadius: '6px',
-                width: '90px',
+                padding: '10px 14px',
+                border: '2px solid rgba(14, 165, 233, 0.3)',
+                borderRadius: '8px',
+                width: '100px',
                 fontSize: '13px',
-                background: 'rgba(255, 255, 255, 0.1)',
+                background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
                 color: '#fff',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.3s ease',
+                fontWeight: '500',
               }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = '#3b82f6';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.borderColor = '#0ea5e9';
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%)';
+                e.currentTarget.style.boxShadow = '0 0 0 4px rgba(14, 165, 233, 0.2)';
               }}
               onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.3)';
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             />
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
+      <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
         <button
           onClick={handleApply}
           style={{
-            padding: '10px 20px',
-            background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+            padding: '12px 24px',
+            background: 'linear-gradient(135deg, #ff6b35 0%, #f97316 100%)',
             color: '#fff',
             border: 'none',
-            borderRadius: '6px',
+            borderRadius: '10px',
             cursor: 'pointer',
             fontSize: '14px',
-            fontWeight: '600',
-            boxShadow: '0 2px 4px rgba(59, 130, 246, 0.2)',
-            transition: 'all 0.2s ease',
+            fontWeight: '700',
+            boxShadow: '0 4px 12px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-1px)';
-            e.currentTarget.style.boxShadow = '0 4px 6px rgba(59, 130, 246, 0.3)';
+            e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+            e.currentTarget.style.boxShadow = '0 6px 16px rgba(255, 107, 53, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 2px 4px rgba(59, 130, 246, 0.2)';
+            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
           }}
         >
           Apply
@@ -215,23 +239,29 @@ function FilterPanelComponent() {
         <button
           onClick={handleClear}
           style={{
-            padding: '10px 20px',
-            background: 'rgba(255, 255, 255, 0.1)',
-            color: '#e2e8f0',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            borderRadius: '6px',
+            padding: '12px 24px',
+            background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%)',
+            color: '#67e8f9',
+            border: '2px solid rgba(14, 165, 233, 0.3)',
+            borderRadius: '10px',
             cursor: 'pointer',
             fontSize: '14px',
-            fontWeight: '500',
-            transition: 'all 0.2s ease',
+            fontWeight: '600',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.25) 0%, rgba(6, 182, 212, 0.25) 100%)';
+            e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.5)';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(14, 165, 233, 0.3)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%)';
+            e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.3)';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = 'none';
           }}
         >
           Clear

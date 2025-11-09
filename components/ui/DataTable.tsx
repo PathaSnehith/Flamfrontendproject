@@ -41,11 +41,12 @@ function DataTableComponent({ height = 400 }: DataTableProps) {
   return (
     <div
       style={{
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        borderRadius: '8px',
+        border: '2px solid rgba(14, 165, 233, 0.3)',
+        borderRadius: '12px',
         overflow: 'hidden',
         height,
-        background: 'rgba(0, 0, 0, 0.2)',
+        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(15, 52, 96, 0.4) 100%)',
+        boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3)',
       }}
     >
       <div
@@ -78,49 +79,50 @@ function DataTableComponent({ height = 400 }: DataTableProps) {
                 style={{
                   position: 'sticky',
                   top: 0,
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%)',
                   zIndex: 1,
-                  borderBottom: '2px solid rgba(255, 255, 255, 0.2)',
+                  borderBottom: '2px solid rgba(14, 165, 233, 0.4)',
+                  backdropFilter: 'blur(10px)',
                 }}
               >
                 <tr>
                     <th
                       style={{
-                        padding: '12px 16px',
+                        padding: '14px 18px',
                         textAlign: 'left',
-                        fontWeight: '600',
-                        borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-                        color: '#e2e8f0',
+                        fontWeight: '700',
+                        borderRight: '2px solid rgba(14, 165, 233, 0.2)',
+                        color: '#67e8f9',
                         fontSize: '13px',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
+                        letterSpacing: '1px',
                       }}
                     >
                       Timestamp
                     </th>
                     <th
                       style={{
-                        padding: '12px 16px',
+                        padding: '14px 18px',
                         textAlign: 'left',
-                        fontWeight: '600',
-                        borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-                        color: '#e2e8f0',
+                        fontWeight: '700',
+                        borderRight: '2px solid rgba(14, 165, 233, 0.2)',
+                        color: '#67e8f9',
                         fontSize: '13px',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
+                        letterSpacing: '1px',
                       }}
                     >
                       Category
                     </th>
                     <th
                       style={{
-                        padding: '12px 16px',
+                        padding: '14px 18px',
                         textAlign: 'right',
-                        fontWeight: '600',
-                        color: '#e2e8f0',
+                        fontWeight: '700',
+                        color: '#67e8f9',
                         fontSize: '13px',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
+                        letterSpacing: '1px',
                       }}
                     >
                       Value
@@ -132,46 +134,53 @@ function DataTableComponent({ height = 400 }: DataTableProps) {
                   <tr
                     key={`${point.timestamp}-${index}`}
                     style={{
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                      height: 44,
-                      background: index % 2 === 0 ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.02)',
-                      transition: 'background-color 0.15s ease',
+                      borderBottom: '1px solid rgba(14, 165, 233, 0.15)',
+                      height: 48,
+                      background: index % 2 === 0 
+                        ? 'linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%)' 
+                        : 'transparent',
+                      transition: 'all 0.2s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(14, 165, 233, 0.15) 100%)';
+                      e.currentTarget.style.borderLeft = '3px solid #ff6b35';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = index % 2 === 0 ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.02)';
+                      e.currentTarget.style.background = index % 2 === 0 
+                        ? 'linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%)' 
+                        : 'transparent';
+                      e.currentTarget.style.borderLeft = 'none';
                     }}
                   >
                     <td
                       style={{
-                        padding: '10px 16px',
-                        borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-                        color: '#cbd5e1',
+                        padding: '12px 18px',
+                        borderRight: '1px solid rgba(14, 165, 233, 0.15)',
+                        color: '#e0f2fe',
                         fontSize: '13px',
+                        fontWeight: '500',
                       }}
                     >
                       {new Date(point.timestamp).toLocaleString()}
                     </td>
                     <td
                       style={{
-                        padding: '10px 16px',
-                        borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-                        color: '#cbd5e1',
+                        padding: '12px 18px',
+                        borderRight: '1px solid rgba(14, 165, 233, 0.15)',
+                        color: '#67e8f9',
                         fontSize: '13px',
-                        fontWeight: '500',
+                        fontWeight: '600',
                       }}
                     >
                       {point.category}
                     </td>
                     <td
                       style={{
-                        padding: '10px 16px',
+                        padding: '12px 18px',
                         textAlign: 'right',
-                        color: '#e2e8f0',
-                        fontSize: '13px',
-                        fontWeight: '600',
+                        color: '#fff',
+                        fontSize: '14px',
+                        fontWeight: '700',
                       }}
                     >
                       {point.value.toFixed(2)}
@@ -185,22 +194,23 @@ function DataTableComponent({ height = 400 }: DataTableProps) {
       </div>
       <div
         style={{
-          padding: '12px 16px',
-          background: 'rgba(255, 255, 255, 0.1)',
-          borderTop: '2px solid rgba(255, 255, 255, 0.2)',
+          padding: '14px 18px',
+          background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%)',
+          borderTop: '2px solid rgba(14, 165, 233, 0.3)',
           fontSize: '13px',
-          color: '#cbd5e1',
-          fontWeight: '500',
+          color: '#67e8f9',
+          fontWeight: '600',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          backdropFilter: 'blur(8px)',
         }}
       >
         <span>
-          Showing {visibleItems.length} of {processedData.length} data points
+          Displaying {visibleItems.length} of {processedData.length} records
         </span>
         {processedData.length > 0 && (
-          <span style={{ fontSize: '11px', color: '#94a3b8' }}>
+          <span style={{ fontSize: '12px', color: '#a5b4fc', fontWeight: '500' }}>
             {((visibleItems.length / processedData.length) * 100).toFixed(1)}% visible
           </span>
         )}
